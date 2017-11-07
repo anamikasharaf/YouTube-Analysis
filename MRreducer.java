@@ -1,3 +1,9 @@
+/**
+ * @author Anamika Sharaf
+ * @date November 7, 2017
+ * 
+ */
+
 package youtube;
 
 import org.apache.hadoop.mapreduce.Reducer;
@@ -10,7 +16,7 @@ public class MRreducer  extends Reducer <Text,Text,Text,Text> {
    	public void reduce(Text key, Iterable<Text> values, Context context) 
 		   throws IOException, InterruptedException {
        
-       // TODO 1: initialize variables
+           // Initialize variables
 	   Long mostViewed = null;
 	   Long mostLiked = null;
 	   Long mostDisliked = null;
@@ -27,7 +33,7 @@ public class MRreducer  extends Reducer <Text,Text,Text,Text> {
 	   
 	   
        
-       // TODO 2: loop through values to find most viewed, most liked, and most disliked video
+           // Loop through values to find most viewed, most liked, and most disliked video
 	   for (Text val: values)
 	   {
 		   String[] arrayvalue = val.toString().split(" ");
@@ -59,7 +65,7 @@ public class MRreducer  extends Reducer <Text,Text,Text,Text> {
 	   }
 	   
        
-       // TODO 3: write the key-value pair to the context exactly as defined in lab write-up
-	   context.write(new Text("Category_ID: "+ key ), new Text("most viewed"+ mostViewed+ "Video ID"+ viewsvideoId+ "most liked"+ mostLiked+ "Video ID"+ likesvideoId+ "most disliked"+ mostDisliked+ "Video ID"+ dislikesvideoId+ "Total records"+ RRC+ "Total bad records"+ RBRC+ "Total good records"+ RGRC));
+           // Write the key-value pair to the context
+           context.write(new Text("Category_ID: "+ key ), new Text("most viewed"+ mostViewed+ "Video ID"+ viewsvideoId+ "most liked"+ mostLiked+ "Video ID"+ likesvideoId+ "most disliked"+ mostDisliked+ "Video ID"+ dislikesvideoId+ "Total records"+ RRC+ "Total bad records"+ RBRC+ "Total good records"+ RGRC));
    }
 }
