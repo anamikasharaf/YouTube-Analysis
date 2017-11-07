@@ -1,3 +1,9 @@
+/**
+ * @author Anamika Sharaf
+ * @date November 7, 2017
+ * 
+ */
+
 package youtube; 
 
 import org.apache.hadoop.conf.Configured;
@@ -20,7 +26,7 @@ public class MRdriver extends Configured implements Tool {
     @SuppressWarnings("deprecation")
    public int run(String[] args) throws Exception {
     
-        // TODO 1: configure  MR job
+        // Configure  MR job
     	  Job job = new Job(getConf(), "youtube"); 
         job.setJarByClass(MRdriver.class);
         job.setMapperClass(MRmapper.class);
@@ -28,17 +34,17 @@ public class MRdriver extends Configured implements Tool {
         job.setCombinerClass(MRreducer.class);
 	
     
-        // TODO 2: setup input and output paths for MR job
+        // Setup input and output paths for MR job
         job.setInputFormatClass(TextInputFormat.class);
-	   	  job.setOutputKeyClass(Text.class);
-	   	  job.setOutputValueClass(Text.class);
-	      job.setMapOutputKeyClass(Text.class);
-	      job.setMapOutputValueClass(Text.class);
+	job.setOutputKeyClass(Text.class);
+	job.setOutputValueClass(Text.class);
+	job.setMapOutputKeyClass(Text.class);
+	job.setMapOutputValueClass(Text.class);
 
-        // TODO 3: run  MR job syncronously with verbose output set to true
-	      FileInputFormat.addInputPath(job, new Path(args[0]));
-		    FileOutputFormat.setOutputPath(job, new Path(args[1]));
-		    //job.waitForCompletion(true);
+        // Run  MR job syncronously with verbose output set to true
+	FileInputFormat.addInputPath(job, new Path(args[0]));
+	FileOutputFormat.setOutputPath(job, new Path(args[1]));
+	//job.waitForCompletion(true);
 	    
         return job.waitForCompletion(true) ? 0 : 1; 
     }
