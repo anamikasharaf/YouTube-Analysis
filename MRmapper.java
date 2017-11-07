@@ -1,3 +1,9 @@
+/**
+ * @author Anamika Sharaf
+ * @date November 7, 2017
+ * 
+ */
+
 package youtube;
 
 import org.apache.hadoop.mapreduce.Mapper;
@@ -45,17 +51,15 @@ public class MRmapper  extends Mapper <LongWritable,Text,Text,Text> {
     	int RC = 0;
         StringTokenizer iterator = new StringTokenizer(value.toString(),"\\s+");
         
-        // TODO 1: remove schema line
+        // Remove schema line
         String[] temp = iterator.toString().split(" ");
 
         if (!temp[0].equals("video_id"))
         {
-        	
-	        	// TODO 2: convert value to string
         		RC++;
         	
 	        
-        		// TODO 3: count num fields, increment bad record counter, and return if bad
+        		// Count num fields, increment bad record counter, and return if bad
 	        	if(temp.length > NF) 
 	        	{
 	        		BRC++;
@@ -63,7 +67,7 @@ public class MRmapper  extends Mapper <LongWritable,Text,Text,Text> {
 	        	else
 	        	{
 	        		GRC++;
-			        // TODO 4: pull out fields of interest
+			        // Pull out fields of interest
 	        		video_id.set(temp[0]);
 	        		views.set(temp[5]);
 	        		videoslikes.set(temp[6]);
@@ -74,10 +78,8 @@ public class MRmapper  extends Mapper <LongWritable,Text,Text,Text> {
 	        		GRCString.set(Integer.toString(GRC));
 	        	}
 	        		
-	        		// TODO 5: construct key and composite value 	
-	               
-			        // TODO 6: write key value pair to context
-	        		context.write(category_id,new Text(video_id+ " " +views + " " +videoslikes+ " " +dislikes+ " " +RCString+ " " +BRCString+ " " +GRCString));
+		        //Write key value pair to context
+	        	context.write(category_id,new Text(video_id+ " " +views + " " +videoslikes+ " " +dislikes+ " " +RCString+ " " +BRCString+ " " +GRCString));
 	        		
         } 
         
