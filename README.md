@@ -6,7 +6,7 @@ https://www.kaggle.com/datasnaek/youtube.
 
 ## Objective
 
-Calculate top statistics for the YouTube data set from Kaggle using a single Hadoop MapReduce program. We will also analyize how many of total records were there and how many among them was good or bad record.
+Calculate top statistics for the YouTube data set from Kaggle using a single Hadoop MapReduce program. We will also analyze how many of total records were there and how many among them was good or bad record.
 
 
 ### Mapper
