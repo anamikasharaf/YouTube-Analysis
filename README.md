@@ -1,6 +1,6 @@
 # YouTube-Analysis
 
-This a Project to analyze YouTube records. Kaggle provided a set of statistics (including views, likes, category, and comments) for videos trending on YouTube.  An overview of the data is located here:
+This project analyzes YouTube records. Kaggle provided a set of statistics (including views, likes, category, and comments) for videos trending on YouTube.  An overview of the data is located here:
 https://www.kaggle.com/datasnaek/youtube.  
 
 
