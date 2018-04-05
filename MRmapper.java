@@ -1,9 +1,3 @@
-/**
- * @author Anamika Sharaf
- * @date November 7, 2017
- * 
- */
-
 package youtube;
 
 import org.apache.hadoop.mapreduce.Mapper;
